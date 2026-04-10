@@ -97,7 +97,7 @@ export const fr: Translations = {
       title: 'Réparez maintenant avec l\'assistant iFixit',
       description: 'Pas besoin d\'attendre la prochaine session ! L\'assistant iFixit vous guide pas à pas pour réparer votre appareil dès aujourd\'hui.',
       cta: 'Lancer l\'assistant iFixit',
-      url: 'https://www.ifixit.com/Chatbot',
+      url: 'https://fixbot.ifixit.com/',
     },
     selfRepair: {
       title: 'Ressources pour réparer soi-même',
