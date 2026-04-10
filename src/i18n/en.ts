@@ -89,7 +89,7 @@ export const en: Translations = {
       title: 'Ready to do it yourself? iFixit bot has got you.',
       description: 'No need to wait for the next session! The iFixit assistant walks you through repairing your device step by step, right now.',
       cta: 'Launch the iFixit assistant',
-      url: 'https://www.ifixit.com/Chatbot',
+      url: 'https://fixbot.ifixit.com/',
     },
     selfRepair: {
       title: 'Resources to repair yourself',

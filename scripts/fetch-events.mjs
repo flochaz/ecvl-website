@@ -73,7 +73,14 @@ try {
   ]);
 
   const now = new Date();
-  const allForms = [...eventForms, ...membershipForms];
+
+  // Deduplicate by URL (API may return overlapping results across formType calls)
+  const seen = new Set();
+  const allForms = [...eventForms, ...membershipForms].filter((e) => {
+    if (seen.has(e.url)) return false;
+    seen.add(e.url);
+    return true;
+  });
 
   const events = allForms
     // Keep forms with a future start date OR no start date (ongoing/permanent)
@@ -92,7 +99,7 @@ try {
       startsAt: e.startDate ?? null,
       endsAt: e.endDate ?? null,
       url: e.url,
-      imageUrl: e.banner ?? null,
+      imageUrl: e.banner?.publicUrl ?? null,
       place: e.place?.address ?? null,
       city: e.place?.city ?? null,
       formType: e.formType,

@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "title": "Bénévole",
+    "description": "J'adhère à l’association ECVL pour une l'année \n☐ et je participe à une de ses actions (Repair Café ou autre) en tant que bénévole.\n☐ et je participe aux activités du « Jardin de l’Abreuvoir ». Je reconnais avoir pris connaissance de la charte concernant le fonctionnement du jardin et m’engage à la respecter.\n",
+    "startsAt": null,
+    "endsAt": null,
+    "url": "https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/adhesions/benevole",
+    "imageUrl": "https://cdn.helloasso.com/img/photos/adhesions/cropped-image-5cf519e21c4d4b8b94a4cbba75327e51.jpeg",
+    "place": null,
+    "city": null,
+    "formType": "Membership"
+  },
+  {
+    "title": "Repair café",
+    "description": "Repair Café est là pour vous aider à réparer vos objets cassés. Rejoignez notre communauté de bénévoles compétents et faites réparer vos biens",
+    "startsAt": null,
+    "endsAt": null,
+    "url": "https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/evenements/repair-cafe",
+    "imageUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-1702fe0107d7400880bb8da12fe7695f.png",
+    "place": null,
+    "city": null,
+    "formType": "Event"
+  }
+]
