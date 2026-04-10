@@ -39,6 +39,13 @@ export interface Translations {
     cta: string;
     taxInfo: string;
   };
+  facebook: {
+    title: string;
+    subtitle: string;
+    consentText: string;
+    loadButton: string;
+    viewPage: string;
+  };
   footer: {
     rights: string;
     legal: string;

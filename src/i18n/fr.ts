@@ -54,6 +54,13 @@ export const fr: Translations = {
     cta: 'Faire un don sur HelloAsso',
     taxInfo: 'Les dons sont déductibles à 66 % de vos impôts.',
   },
+  facebook: {
+    title: 'Suivez-nous sur Facebook',
+    subtitle: 'Actualités, photos et annonces de nos activités',
+    consentText: 'Cliquez pour charger notre fil Facebook. Ce contenu est hébergé par Facebook et soumis à leur politique de confidentialité.',
+    loadButton: 'Afficher le flux',
+    viewPage: 'Voir la page Facebook →',
+  },
   footer: {
     rights: 'Tous droits réservés.',
     legal: 'Mentions légales',

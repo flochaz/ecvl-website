@@ -54,6 +54,13 @@ export const en: Translations = {
     cta: 'Donate on HelloAsso',
     taxInfo: 'Donations are 66% tax-deductible in France.',
   },
+  facebook: {
+    title: 'Follow us on Facebook',
+    subtitle: 'News, photos and updates from our activities',
+    consentText: 'Click to load our Facebook feed. This content is hosted by Facebook and subject to their privacy policy.',
+    loadButton: 'Show feed',
+    viewPage: 'View Facebook page →',
+  },
   footer: {
     rights: 'All rights reserved.',
     legal: 'Legal notice',
