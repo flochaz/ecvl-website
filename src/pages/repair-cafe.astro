@@ -139,10 +139,26 @@ const repairEvents = allEvents.filter((e) =>
     <!-- RepairMonitor stats -->
     <section class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">{tr.repairMonitor.title}</h2>
-      <p class="text-gray-500 text-sm mb-6">{tr.repairMonitor.subtitle}</p>
-      <!-- Stats will be injected here by GitHub Actions when RepairMonitor data is available -->
-      <div id="repairmonitor-stats">
-        <p class="text-gray-400 text-sm italic">{tr.repairMonitor.noData}</p>
+      <p class="text-gray-500 text-sm mb-2">{tr.repairMonitor.subtitle}</p>
+      <!-- Preview with fake graphs -->
+      <div class="flex items-start gap-2 mb-6 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+        <span class="text-amber-500 mt-0.5">⚠️</span>
+        <p class="text-amber-800 text-sm leading-relaxed">{tr.repairMonitor.fakeDataNote}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {[1, 2, 3].map((n) => (
+          <div class="relative rounded-xl overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
+            <img
+              src={`${import.meta.env.BASE_URL}/images/repair-monitor-${n}.png`}
+              alt={`RepairMonitor – graphique ${n}`}
+              class="w-full h-auto"
+              loading="lazy"
+            />
+            <div class="absolute top-2 right-2 bg-amber-400 text-amber-900 text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
+              {tr.repairMonitor.fakeDataBadge}
+            </div>
+          </div>
+        ))}
       </div>
       <p class="text-xs text-gray-400 mt-4">
         Données via <a href="https://repairmonitor.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">RepairMonitor</a>

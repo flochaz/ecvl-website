@@ -58,7 +58,7 @@ export interface Translations {
       repairCafeIntl: string;
       repairCafeIntlUrl: string;
     };
-    repairMonitor: { title: string; subtitle: string; noData: string };
+    repairMonitor: { title: string; subtitle: string; noData: string; fakeDataBadge: string; fakeDataNote: string };
     nextSessions: string;
     register: string;
   };

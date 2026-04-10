@@ -95,6 +95,8 @@ export const fr: Translations = {
       title: 'Nos statistiques de réparation',
       subtitle: 'Résultats de nos précédentes sessions via RepairMonitor',
       noData: 'Les données des sessions précédentes seront disponibles ici prochainement.',
+      fakeDataBadge: 'Données fictives',
+      fakeDataNote: 'Aperçu de ce que permettra l\'intégration RepairMonitor — les vraies données apparaîtront ici une fois connectées.',
     },
     nextSessions: 'Prochaines sessions',
     register: 'S\'inscrire sur HelloAsso',
