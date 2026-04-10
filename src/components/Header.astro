@@ -13,12 +13,13 @@ const otherLang = lang === 'fr' ? 'en' : 'fr';
 
 // Compute equivalent path in the other language
 function getOtherLangPath(): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   if (lang === 'fr') {
-    return `/en${currentPath}`;
+    return `${base}/en${currentPath}`;
   } else {
     // strip /en prefix
     const stripped = currentPath.replace(/^\/en/, '') || '/';
-    return stripped;
+    return `${base}${stripped}`;
   }
 }
 
@@ -26,48 +27,52 @@ const navLinks = [
   { href: getLocalePath(lang, '/'), label: t.nav.home },
   { href: getLocalePath(lang, '/repair-cafe'), label: t.nav.repairCafe },
   { href: getLocalePath(lang, '/jardin-partage'), label: t.nav.garden },
-  { href: getLocalePath(lang, '/don'), label: t.nav.donate },
 ];
 ---
 
-<header class="bg-white shadow-sm sticky top-0 z-50">
+<header class="bg-white/95 backdrop-blur-sm border-b border-ecvl-green-100 sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href={getLocalePath(lang, '/')} class="flex items-center gap-2 group">
-        <div class="w-9 h-9 bg-ecvl-green-600 rounded-full flex items-center justify-center shrink-0">
-          <span class="text-white font-bold text-sm">🌿</span>
-        </div>
-        <div class="hidden sm:block">
-          <span class="font-bold text-ecvl-green-800 text-sm leading-tight block">{t.site.name}</span>
-          <span class="text-xs text-gray-500 leading-tight block">{lang === 'fr' ? 'Villeneuve-Loubet' : 'Villeneuve-Loubet'}</span>
+      <a href={getLocalePath(lang, '/')} class="flex items-center gap-2.5 group">
+        <img
+          src={`${import.meta.env.BASE_URL}images/logo.png`}
+          alt="ECVL"
+          class="w-10 h-10 object-contain shrink-0"
+        />
+        <div class="hidden sm:block leading-none">
+          <span class="font-bold text-ecvl-green-900 text-sm tracking-tight block">{t.site.name}</span>
+          <span class="text-[10px] text-ecvl-earth-500 font-medium uppercase tracking-wider block mt-0.5">Villeneuve-Loubet</span>
         </div>
       </a>
 
       <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-6">
+      <nav class="hidden md:flex items-center gap-1">
         {navLinks.map(({ href, label }) => (
           <a
             href={href}
-            class="text-sm font-medium text-gray-700 hover:text-ecvl-green-700 transition-colors"
+            class="text-sm font-medium text-gray-600 hover:text-ecvl-green-700 px-3 py-2 rounded-lg hover:bg-ecvl-green-50 transition-all"
           >
             {label}
           </a>
         ))}
-        <a
-          href={getLocalePath(lang, '/don')}
-          class="bg-ecvl-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors"
-        >
-          {t.nav.donate}
-        </a>
       </nav>
 
-      <!-- Right: lang switch + mobile menu -->
-      <div class="flex items-center gap-3">
+      <!-- Right: donate CTA + lang switch + mobile menu -->
+      <div class="flex items-center gap-2">
+        <!-- Donate CTA -->
+        <a
+          href={getLocalePath(lang, '/don')}
+          class="hidden md:inline-flex items-center gap-1.5 bg-ecvl-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors shadow-sm"
+        >
+          <span class="text-xs">❤️</span>
+          {t.nav.donate}
+        </a>
+
         <!-- Language switch -->
         <a
           href={getOtherLangPath()}
-          class="text-xs font-semibold uppercase tracking-wide text-ecvl-green-700 border border-ecvl-green-300 rounded px-2 py-1 hover:bg-ecvl-green-50 transition-colors"
+          class="text-xs font-bold uppercase tracking-wider text-ecvl-green-700 border border-ecvl-green-200 rounded-lg px-2.5 py-1.5 hover:bg-ecvl-green-50 transition-colors"
           aria-label={`Switch to ${otherLang === 'fr' ? 'Français' : 'English'}`}
         >
           {otherLang === 'fr' ? 'FR' : 'EN'}
@@ -76,7 +81,7 @@ const navLinks = [
         <!-- Mobile hamburger -->
         <button
           id="menu-btn"
-          class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+          class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
           aria-label="Toggle menu"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,19 +92,22 @@ const navLinks = [
     </div>
 
     <!-- Mobile menu -->
-    <nav id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-100 pt-4">
-      <div class="flex flex-col gap-3">
+    <nav id="mobile-menu" class="hidden md:hidden py-4 border-t border-gray-100">
+      <div class="flex flex-col gap-1">
         {navLinks.map(({ href, label }) => (
-          <a href={href} class="text-sm font-medium text-gray-700 hover:text-ecvl-green-700 transition-colors">
+          <a href={href} class="text-sm font-medium text-gray-700 hover:text-ecvl-green-700 px-3 py-2 rounded-lg hover:bg-ecvl-green-50 transition-all">
             {label}
           </a>
         ))}
-        <a
-          href={getLocalePath(lang, '/don')}
-          class="bg-ecvl-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold text-center hover:bg-ecvl-green-700 transition-colors"
-        >
-          {t.nav.donate}
-        </a>
+        <div class="pt-2 mt-1 border-t border-gray-100">
+          <a
+            href={getLocalePath(lang, '/don')}
+            class="flex items-center justify-center gap-1.5 bg-ecvl-green-600 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors"
+          >
+            <span class="text-xs">❤️</span>
+            {t.nav.donate}
+          </a>
+        </div>
       </div>
     </nav>
   </div>

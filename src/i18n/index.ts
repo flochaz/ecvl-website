@@ -17,6 +17,7 @@ export function useTranslations(lang: Lang): Translations {
 }
 
 export function getLocalePath(lang: Lang, path: string): string {
-  if (lang === 'fr') return path;
-  return `/en${path}`;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  if (lang === 'fr') return `${base}${path}`;
+  return `${base}/en${path}`;
 }

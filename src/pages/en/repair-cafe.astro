@@ -16,26 +16,56 @@ const repairEvents = allEvents.filter((e) =>
 ---
 
 <Layout lang={lang} currentPath="/en/repair-cafe" title={tr.title}>
-  <section class="bg-gradient-to-br from-ecvl-earth-700 to-ecvl-earth-900 text-white relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+  <section class="relative overflow-hidden bg-ecvl-earth-900 min-h-[420px] md:min-h-[500px] flex items-center">
+    <img
+      src={`${import.meta.env.BASE_URL}images/repair-banner.png`}
+      alt="Volunteers at the Repair Café"
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-40"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-ecvl-earth-900/90 via-ecvl-earth-900/60 to-transparent"></div>
+    <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
       <div class="max-w-2xl">
         <a href={getLocalePath(lang, '/')} class="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm mb-6 transition-colors">
           ← {t.nav.home}
         </a>
         <div class="text-5xl mb-4">🛠️</div>
-        <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">{tr.title}</h1>
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">{tr.title}</h1>
         <p class="text-xl text-ecvl-earth-200 italic mb-6">{tr.subtitle}</p>
         <p class="text-ecvl-earth-100 leading-relaxed">{tr.intro}</p>
       </div>
     </div>
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-12">
-        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="white" />
+        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="#fef9f0" />
       </svg>
     </div>
   </section>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+    <!-- Photo + intro -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="rounded-2xl overflow-hidden shadow-md aspect-[4/3]">
+        <img
+          src={`${import.meta.env.BASE_URL}images/repair-1.jpg`}
+          alt="Collaborative repair at the Repair Café"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+      <div class="space-y-4">
+        <p class="text-gray-700 leading-relaxed">{tr.intro}</p>
+        <a
+          href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/evenements/repair-cafe"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-ecvl-earth-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-ecvl-earth-700 transition-colors"
+        >
+          {tr.register} →
+        </a>
+      </div>
+    </section>
+
+    <!-- How it works -->
     <section>
       <h2 class="text-2xl font-bold text-gray-900 mb-8">{tr.howItWorks.title}</h2>
       <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -105,7 +135,7 @@ const repairEvents = allEvents.filter((e) =>
       ) : (
         <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
           <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
-          <a href="https://www.helloasso.com" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/evenements/repair-cafe" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-2 bg-ecvl-earth-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-earth-700 transition-colors">
             {tr.register}
           </a>

@@ -3,7 +3,7 @@ export type { Translations };
 
 export const fr: Translations = {
   site: {
-    name: 'ÉCVL',
+    name: 'ECVL',
     fullName: 'Écologie Citoyenne pour Villeneuve-Loubet',
     tagline: 'Ensemble pour un territoire plus vert et solidaire',
     description:

@@ -19,26 +19,53 @@ const gardenEvents = allEvents.filter((e) =>
 ---
 
 <Layout lang={lang} currentPath="/en/shared-garden" title={tg.title}>
-  <section class="bg-gradient-to-br from-ecvl-green-800 to-ecvl-green-600 text-white relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+  <section class="relative overflow-hidden bg-ecvl-green-900 min-h-[420px] md:min-h-[500px] flex items-center">
+    <img
+      src={`${import.meta.env.BASE_URL}images/jardin-banner.png`}
+      alt="The shared garden at Villeneuve-Loubet"
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-50"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-ecvl-green-900/90 via-ecvl-green-900/55 to-transparent"></div>
+    <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
       <div class="max-w-2xl">
         <a href={getLocalePath(lang, '/')} class="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm mb-6 transition-colors">
           ← {t.nav.home}
         </a>
         <div class="text-5xl mb-4">🌱</div>
-        <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">{tg.title}</h1>
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">{tg.title}</h1>
         <p class="text-xl text-ecvl-green-100 italic mb-6">{tg.subtitle}</p>
         <p class="text-ecvl-green-100 leading-relaxed">{tg.intro}</p>
       </div>
     </div>
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-12">
-        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="white" />
+        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="#fef9f0" />
       </svg>
     </div>
   </section>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+    <!-- Photo gallery -->
+    <section class="grid grid-cols-2 gap-4">
+      <div class="rounded-2xl overflow-hidden shadow-md aspect-[4/3]">
+        <img
+          src={`${import.meta.env.BASE_URL}images/jardin-1.jpg`}
+          alt="Fresh vegetables from the shared garden"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-md aspect-[4/3]">
+        <img
+          src={`${import.meta.env.BASE_URL}images/jardin-2.jpg`}
+          alt="Harvesting sweet potatoes in the garden"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <!-- What we grow + principles -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-10">
       <div class="bg-ecvl-green-50 rounded-2xl p-7">
         <h2 class="text-xl font-bold text-gray-900 mb-5">{tg.whatWeGrow.title}</h2>
@@ -95,7 +122,7 @@ const gardenEvents = allEvents.filter((e) =>
       ) : (
         <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
           <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
-          <a href="https://www.helloasso.com" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/adhesions/benevole" target="_blank" rel="noopener noreferrer"
              class="inline-flex items-center gap-2 bg-ecvl-green-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors">
             {t.events.viewAll}
           </a>

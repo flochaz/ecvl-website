@@ -29,6 +29,7 @@ export default {
             800: '#6d3d19',
             900: '#5a341a',
           },
+          cream: '#fef9f0',
           sky: '#e8f5e9',
         },
       },
