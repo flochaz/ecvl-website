@@ -135,6 +135,11 @@ export const en: Translations = {
       description:
         'Every summer, we organise gleaning outings to pick fruit from untended trees. Nothing goes to waste!',
     },
+    membership: {
+      title: 'Become a volunteer',
+      description:
+        'Join the shared garden volunteer team! Sign up via HelloAsso to take part in workshops and help tend the garden together.',
+    },
     nextEvents: 'Next gardening workshops',
   },
 };

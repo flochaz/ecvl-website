@@ -135,6 +135,11 @@ export const fr: Translations = {
       description:
         'Chaque été, nous organisons des sorties de glanage pour cueillir les fruits des arbres non exploités. Rien ne se perd !',
     },
+    membership: {
+      title: 'Devenir bénévole',
+      description:
+        'Rejoignez l’équipe de bénévoles du jardin partagé ! Inscrivez-vous via HelloAsso pour participer aux ateliers et prendre soin du jardin ensemble.',
+    },
     nextEvents: 'Prochains ateliers jardinage',
   },
 };
