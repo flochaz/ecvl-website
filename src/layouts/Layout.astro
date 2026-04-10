@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
 import type { Lang } from '../i18n';
 import { useTranslations } from '../i18n';
 
@@ -34,12 +35,42 @@ const pageDesc = description ?? t.site.description;
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
+    <ClientRouter />
   </head>
   <body class="bg-ecvl-cream text-gray-900 font-sans antialiased">
-    <Header lang={lang} currentPath={currentPath} />
-    <main>
+    <!-- Navigation progress bar -->
+    <div id="spa-progress" class="fixed top-0 left-0 z-[9999] h-[3px] bg-ecvl-green-500 transition-all duration-300 ease-out w-0 opacity-0"></div>
+    <Header lang={lang} currentPath={currentPath} transition:persist />
+    <main transition:animate="slide">
       <slot />
     </main>
-    <Footer lang={lang} />
+    <Footer lang={lang} transition:persist />
   </body>
 </html>
+
+<script>
+  import { navigate } from 'astro:transitions/client';
+
+  // Progress bar on page transitions
+  const bar = document.getElementById('spa-progress') as HTMLElement | null;
+
+  function showProgress() {
+    if (!bar) return;
+    bar.style.opacity = '1';
+    bar.style.width = '70%';
+  }
+  function completeProgress() {
+    if (!bar) return;
+    bar.style.width = '100%';
+    setTimeout(() => {
+      bar.style.opacity = '0';
+      bar.style.width = '0';
+    }, 300);
+  }
+
+  document.addEventListener('astro:before-preparation', showProgress);
+  document.addEventListener('astro:page-load', completeProgress);
+
+  // Scroll to top on every navigation
+  document.addEventListener('astro:after-swap', () => window.scrollTo({ top: 0 }));
+</script>
