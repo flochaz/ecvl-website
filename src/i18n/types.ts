@@ -11,6 +11,7 @@ export interface Translations {
     garden: string;
     donate: string;
     contact: string;
+    participate: string;
   };
   hero: {
     title: string;
@@ -85,5 +86,23 @@ export interface Translations {
     principles: { title: string; items: string[] };
     fruitPicking: { title: string; description: string };
     nextEvents: string;
+  };
+  participate: {
+    title: string;
+    subtitle: string;
+    intro: string;
+    repairCafe: {
+      title: string;
+      schedule: string;
+      description: string;
+      tasks: string[];
+    };
+    garden: {
+      title: string;
+      schedule: string;
+      description: string;
+      tasks: string[];
+    };
+    widgetTitle: string;
   };
 }

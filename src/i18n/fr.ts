@@ -15,6 +15,7 @@ export const fr: Translations = {
     garden: 'Jardin Partagé',
     donate: 'Faire un don',
     contact: 'Contact',
+    participate: 'Participer',
   },
   hero: {
     title: 'Écologie Citoyenne pour Villeneuve-Loubet',
@@ -157,5 +158,34 @@ export const fr: Translations = {
         'Rejoignez l’équipe de bénévoles du jardin partagé ! Inscrivez-vous via HelloAsso pour participer aux ateliers et prendre soin du jardin ensemble.',
     },
     nextEvents: 'Prochains ateliers jardinage',
+  },
+  participate: {
+    title: 'Participer à l\'association',
+    subtitle: 'Bénévole pour le Repair Café ou le Jardin Partagé',
+    intro: 'Devenir bénévole ECVL, c\'est rejoindre une équipe engagée et conviviale pour agir concrètement pour l\'environnement et le lien social à Villeneuve-Loubet. Pas besoin d\'expertise : votre bonne volonté et votre curiosité suffisent !',
+    repairCafe: {
+      title: 'Bénévole Repair Café',
+      schedule: '1er samedi du mois — après-midi de 4h',
+      description: 'Chaque premier samedi du mois, nous ouvrons les portes du Repair Café pour aider les habitants à faire réparer leurs objets. En tant que bénévole, vous accueillez les visiteurs et prêtez main-forte aux réparateurs selon vos compétences. La session dure environ 4 heures l\'après-midi. Venez quand vous pouvez, chaque présence compte !',
+      tasks: [
+        'Accueil des visiteurs et gestion de la file',
+        'Réparations (si vous avez des compétences en électronique, couture, mécanique...)',
+        'Mise en place et rangement de l\'espace',
+        'Animation et lien social avec les participants',
+      ],
+    },
+    garden: {
+      title: 'Bénévole Jardin Partagé',
+      schedule: 'Ateliers réguliers au jardin de l\'Abreuvoir',
+      description: 'Le jardin de l\'Abreuvoir est un espace partagé où nous cultivons ensemble selon les principes du jardinage biologique. Des ateliers réguliers sont organisés tout au long de l\'année : semis, entretien, récolte, compostage. En adhérant, vous vous engagez à respecter la charte du jardin et à contribuer à son entretien collectif.',
+      tasks: [
+        'Semis, plantation et entretien des cultures',
+        'Arrosage et désherbage',
+        'Récolte et partage des productions',
+        'Compostage et amélioration du sol',
+        'Participation aux décisions collectives',
+      ],
+    },
+    widgetTitle: 'Je m\'inscris comme bénévole',
   },
 };

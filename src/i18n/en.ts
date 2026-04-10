@@ -14,6 +14,7 @@ export const en: Translations = {
     garden: 'Shared Garden',
     donate: 'Donate',
     contact: 'Contact',
+    participate: 'Volunteer',
   },
   hero: {
     title: 'Citizen Ecology for Villeneuve-Loubet',
@@ -157,5 +158,34 @@ export const en: Translations = {
         'Join the shared garden volunteer team! Sign up via HelloAsso to take part in workshops and help tend the garden together.',
     },
     nextEvents: 'Next gardening workshops',
+  },
+  participate: {
+    title: 'Volunteer for the association',
+    subtitle: 'Help out at the Repair Café or the Shared Garden',
+    intro: 'Becoming an ECVL volunteer means joining a friendly, committed team to take concrete action for the environment and social connection in Villeneuve-Loubet. No expertise required — your goodwill and curiosity are all you need!',
+    repairCafe: {
+      title: 'Repair Café Volunteer',
+      schedule: '1st Saturday of the month — 4-hour afternoon session',
+      description: 'Every first Saturday of the month, we open the Repair Café to help local residents fix their broken items. As a volunteer, you welcome visitors and assist the repairers according to your skills. Sessions last around 4 hours in the afternoon. Come when you can — every presence counts!',
+      tasks: [
+        'Welcoming visitors and managing the queue',
+        'Repairs (if you have skills in electronics, sewing, mechanics...)',
+        'Setting up and tidying the space',
+        'Creating a friendly atmosphere for participants',
+      ],
+    },
+    garden: {
+      title: 'Shared Garden Volunteer',
+      schedule: 'Regular workshops at the Abreuvoir garden',
+      description: 'The Abreuvoir garden is a shared space where we grow together following organic gardening principles. Regular workshops are organised throughout the year: sowing, maintenance, harvesting, composting. By joining, you commit to respecting the garden charter and contributing to its collective upkeep.',
+      tasks: [
+        'Sowing, planting and maintaining crops',
+        'Watering and weeding',
+        'Harvesting and sharing produce',
+        'Composting and improving the soil',
+        'Taking part in collective decisions',
+      ],
+    },
+    widgetTitle: 'Sign me up as a volunteer',
   },
 };
