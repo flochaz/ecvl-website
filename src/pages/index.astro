@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventCard from '../components/EventCard.astro';
+import { useTranslations, getLocalePath } from '../i18n';
+import type { HAEvent } from '../types/events';
+import eventsData from '../data/events.json';
+
+const lang = 'fr';
+const t = useTranslations(lang);
+const events = eventsData as HAEvent[];
+---
+
+<Layout lang={lang} currentPath="/" title={t.hero.title}>
+  <!-- ── Hero ─────────────────────────────────────────────────── -->
+  <section class="relative bg-gradient-to-br from-ecvl-green-800 via-ecvl-green-700 to-ecvl-green-600 text-white overflow-hidden">
+    <div
+      class="absolute inset-0 opacity-10"
+      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+    ></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div class="max-w-2xl">
+        <span class="inline-block bg-white/20 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-widest rounded-full px-3 py-1 mb-5">
+          Villeneuve-Loubet · Alpes-Maritimes
+        </span>
+        <h1 class="font-display text-4xl md:text-5xl font-bold leading-tight mb-5">
+          {t.hero.title}
+        </h1>
+        <p class="text-lg md:text-xl text-ecvl-green-100 mb-8 leading-relaxed">
+          {t.hero.subtitle}
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#evenements"
+            class="bg-white text-ecvl-green-800 font-semibold px-6 py-3 rounded-full hover:bg-ecvl-green-50 transition-colors"
+          >
+            {t.hero.cta}
+          </a>
+          <a
+            href="#activites"
+            class="border border-white/50 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
+          >
+            {t.hero.learnMore}
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- wave bottom -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-12 md:h-16">
+        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="white" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── Activities overview ───────────────────────────────────── -->
+  <section id="activites" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-ecvl-green-900 mb-10 text-center">
+      {t.activities.title}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Repair Cafe -->
+      <a
+        href={getLocalePath(lang, '/repair-cafe')}
+        class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-ecvl-green-300 transition-all p-7 flex flex-col gap-3"
+      >
+        <div class="text-4xl">🛠️</div>
+        <h3 class="font-bold text-lg text-gray-900 group-hover:text-ecvl-green-700 transition-colors">
+          {t.activities.repairCafe.title}
+        </h3>
+        <p class="text-sm text-gray-600 leading-relaxed flex-1">{t.activities.repairCafe.short}</p>
+        <span class="text-sm font-semibold text-ecvl-green-600 group-hover:text-ecvl-green-800 transition-colors flex items-center gap-1">
+          {t.activities.repairCafe.cta}
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </a>
+
+      <!-- Garden -->
+      <a
+        href={getLocalePath(lang, '/jardin-partage')}
+        class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-ecvl-green-300 transition-all p-7 flex flex-col gap-3"
+      >
+        <div class="text-4xl">🥬</div>
+        <h3 class="font-bold text-lg text-gray-900 group-hover:text-ecvl-green-700 transition-colors">
+          {t.activities.garden.title}
+        </h3>
+        <p class="text-sm text-gray-600 leading-relaxed flex-1">{t.activities.garden.short}</p>
+        <span class="text-sm font-semibold text-ecvl-green-600 group-hover:text-ecvl-green-800 transition-colors flex items-center gap-1">
+          {t.activities.garden.cta}
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </a>
+
+      <!-- Fruit picking -->
+      <div class="bg-ecvl-sky rounded-2xl border border-ecvl-green-100 p-7 flex flex-col gap-3">
+        <div class="text-4xl">🍑</div>
+        <h3 class="font-bold text-lg text-gray-900">{t.activities.fruitPicking.title}</h3>
+        <p class="text-sm text-gray-600 leading-relaxed flex-1">{t.activities.fruitPicking.short}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Upcoming Events ───────────────────────────────────────── -->
+  <section id="evenements" class="bg-ecvl-green-50 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-ecvl-green-900 mb-3">
+          {t.events.title}
+        </h2>
+        <p class="text-gray-600">{t.events.subtitle}</p>
+      </div>
+
+      {events.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event) => (
+            <EventCard event={event} lang={lang} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16 bg-white rounded-2xl border border-gray-100">
+          <div class="text-5xl mb-4">📅</div>
+          <p class="text-gray-500">{t.events.noEvents}</p>
+          <a
+            href="https://www.helloasso.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 inline-block text-sm font-semibold text-ecvl-green-600 hover:underline"
+          >
+            {t.events.viewAll} →
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ── Donate ────────────────────────────────────────────────── -->
+  <section id="don" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="bg-gradient-to-br from-ecvl-green-700 to-ecvl-green-900 rounded-3xl text-white px-8 py-12 md:py-16 text-center">
+      <div class="text-5xl mb-5">💚</div>
+      <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">{t.donate.title}</h2>
+      <p class="text-ecvl-green-100 text-lg mb-2 max-w-xl mx-auto">{t.donate.subtitle}</p>
+      <p class="text-ecvl-green-300 text-sm mb-8">{t.donate.taxInfo}</p>
+      <a
+        href="https://www.helloasso.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-white text-ecvl-green-800 font-bold px-8 py-4 rounded-full hover:bg-ecvl-green-50 transition-colors text-base"
+      >
+        ❤️ {t.donate.cta}
+      </a>
+    </div>
+  </section>
+</Layout>

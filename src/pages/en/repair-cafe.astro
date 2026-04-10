@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EventCard from '../../components/EventCard.astro';
+import { useTranslations, getLocalePath } from '../../i18n';
+import type { HAEvent } from '../../types/events';
+import eventsData from '../../data/events.json';
+
+const lang = 'en';
+const t = useTranslations(lang);
+const tr = t.repairCafe;
+
+const allEvents = eventsData as HAEvent[];
+const repairEvents = allEvents.filter((e) =>
+  e.title.toLowerCase().includes('repair'),
+);
+---
+
+<Layout lang={lang} currentPath="/en/repair-cafe" title={tr.title}>
+  <section class="bg-gradient-to-br from-ecvl-earth-700 to-ecvl-earth-900 text-white relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="max-w-2xl">
+        <a href={getLocalePath(lang, '/')} class="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm mb-6 transition-colors">
+          ← {t.nav.home}
+        </a>
+        <div class="text-5xl mb-4">🛠️</div>
+        <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">{tr.title}</h1>
+        <p class="text-xl text-ecvl-earth-200 italic mb-6">{tr.subtitle}</p>
+        <p class="text-ecvl-earth-100 leading-relaxed">{tr.intro}</p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-12">
+        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="white" />
+      </svg>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">{tr.howItWorks.title}</h2>
+      <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {tr.howItWorks.steps.map((step, i) => (
+          <li class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-3">
+            <span class="w-9 h-9 rounded-full bg-ecvl-earth-100 text-ecvl-earth-700 font-bold flex items-center justify-center text-sm">{i + 1}</span>
+            <p class="text-sm text-gray-700 leading-relaxed">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-5">{tr.whatWeRepair.title}</h2>
+        <ul class="space-y-3">
+          {tr.whatWeRepair.items.map((item) => (
+            <li class="flex items-center gap-3 text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-ecvl-earth-500 shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-ecvl-green-50 rounded-2xl p-7">
+        <h2 class="text-xl font-bold text-gray-900 mb-5">{tr.selfRepair.title}</h2>
+        <div class="flex flex-col gap-4">
+          <a href={tr.selfRepair.ifixitUrl} target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-3 bg-white rounded-xl p-4 border border-ecvl-green-100 hover:border-ecvl-green-400 transition-colors group">
+            <span class="text-2xl">🔧</span>
+            <div>
+              <p class="font-semibold text-sm text-gray-900 group-hover:text-ecvl-green-700 transition-colors">{tr.selfRepair.ifixit}</p>
+              <p class="text-xs text-gray-500">ifixit.com</p>
+            </div>
+          </a>
+          <a href={tr.selfRepair.repairCafeIntlUrl} target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-3 bg-white rounded-xl p-4 border border-ecvl-green-100 hover:border-ecvl-green-400 transition-colors group">
+            <span class="text-2xl">🌍</span>
+            <div>
+              <p class="font-semibold text-sm text-gray-900 group-hover:text-ecvl-green-700 transition-colors">{tr.selfRepair.repairCafeIntl}</p>
+              <p class="text-xs text-gray-500">repaircafe.org</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">{tr.repairMonitor.title}</h2>
+      <p class="text-gray-500 text-sm mb-6">{tr.repairMonitor.subtitle}</p>
+      <div id="repairmonitor-stats">
+        <p class="text-gray-400 text-sm italic">{tr.repairMonitor.noData}</p>
+      </div>
+      <p class="text-xs text-gray-400 mt-4">
+        Data via <a href="https://repairmonitor.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">RepairMonitor</a>
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{tr.nextSessions}</h2>
+      {repairEvents.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {repairEvents.map((event) => (
+            <EventCard event={event} lang={lang} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
+          <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
+          <a href="https://www.helloasso.com" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 bg-ecvl-earth-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-earth-700 transition-colors">
+            {tr.register}
+          </a>
+        </div>
+      )}
+    </section>
+  </div>
+</Layout>
