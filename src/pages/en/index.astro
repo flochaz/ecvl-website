@@ -8,7 +8,7 @@ import eventsData from '../../data/events.json';
 const lang = 'en';
 const t = useTranslations(lang);
 const currentPath = '/en/';
-const events = eventsData as HAEvent[];
+const events = (eventsData as HAEvent[]).filter((e) => e.formType !== 'Membership');
 ---
 
 <Layout lang={lang} currentPath={currentPath} title={t.hero.title}>

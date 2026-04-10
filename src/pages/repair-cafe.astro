@@ -12,7 +12,7 @@ const tr = t.repairCafe;
 // Filter repair café events (title contains "repair" case-insensitive)
 const allEvents = eventsData as HAEvent[];
 const repairEvents = allEvents.filter((e) =>
-  e.title.toLowerCase().includes('repair'),
+  e.formType !== 'Membership' && e.title.toLowerCase().includes('repair'),
 );
 ---
 

@@ -11,10 +11,11 @@ const tg = t.garden;
 
 const allEvents = eventsData as HAEvent[];
 const gardenEvents = allEvents.filter((e) =>
-  e.title.toLowerCase().includes('garden') ||
+  e.formType !== 'Membership' &&
+  (e.title.toLowerCase().includes('garden') ||
   e.title.toLowerCase().includes('jardin') ||
   e.title.toLowerCase().includes('gleaning') ||
-  e.title.toLowerCase().includes('glan'),
+  e.title.toLowerCase().includes('glan')),
 );
 ---
 

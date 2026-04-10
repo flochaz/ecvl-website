@@ -11,7 +11,7 @@ const tr = t.repairCafe;
 
 const allEvents = eventsData as HAEvent[];
 const repairEvents = allEvents.filter((e) =>
-  e.title.toLowerCase().includes('repair'),
+  e.formType !== 'Membership' && e.title.toLowerCase().includes('repair'),
 );
 ---
 
