@@ -41,19 +41,20 @@ async function getToken() {
   return data.access_token;
 }
 
-async function fetchEvents(token) {
+async function fetchForms(token, formType) {
   const url = new URL(
     `https://api.helloasso.com/v5/organizations/${orgSlug}/forms`,
   );
-  url.searchParams.set('formType', 'Event');
+  url.searchParams.set('formType', formType);
   url.searchParams.set('states', 'Public');
-  url.searchParams.set('pageSize', '20');
+  url.searchParams.set('pageSize', '50');
 
   const res = await fetch(url.toString(), {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!res.ok) throw new Error(`Events fetch failed: ${res.status}`);
-  return res.json();
+  if (!res.ok) throw new Error(`Fetch failed for ${formType}: ${res.status}`);
+  const json = await res.json();
+  return json.data ?? [];
 }
 
 async function writeEmptyEvents() {
@@ -64,21 +65,37 @@ async function writeEmptyEvents() {
 
 try {
   const token = await getToken();
-  const json = await fetchEvents(token);
+
+  // Fetch both Event and Membership form types in parallel
+  const [eventForms, membershipForms] = await Promise.all([
+    fetchForms(token, 'Event'),
+    fetchForms(token, 'Membership'),
+  ]);
+
   const now = new Date();
-  const events = (json.data ?? [])
-    .filter((e) => e.startDate && new Date(e.startDate) >= now)
-    .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
-    .slice(0, 6)
+  const allForms = [...eventForms, ...membershipForms];
+
+  const events = allForms
+    // Keep forms with a future start date OR no start date (ongoing/permanent)
+    .filter((e) => !e.startDate || new Date(e.startDate) >= now)
+    // Sort: dated events first (ascending), then undated ones at the end
+    .sort((a, b) => {
+      if (a.startDate && b.startDate) return new Date(a.startDate) - new Date(b.startDate);
+      if (a.startDate) return -1;
+      if (b.startDate) return 1;
+      return 0;
+    })
+    .slice(0, 9)
     .map((e) => ({
       title: e.title,
       description: e.description ?? '',
-      startsAt: e.startDate,
-      endsAt: e.endDate,
+      startsAt: e.startDate ?? null,
+      endsAt: e.endDate ?? null,
       url: e.url,
       imageUrl: e.banner ?? null,
       place: e.place?.address ?? null,
       city: e.place?.city ?? null,
+      formType: e.formType,
     }));
 
   const outDir = join(__dirname, '../src/data');
