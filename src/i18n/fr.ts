@@ -84,6 +84,13 @@ export const fr: Translations = {
         'Jouets',
       ],
     },
+    ifixitBot: {
+      eyebrow: 'Vous êtes pressé·e ?',
+      title: 'Réparez maintenant avec l\'assistant iFixit',
+      description: 'Pas besoin d\'attendre la prochaine session ! L\'assistant iFixit vous guide pas à pas pour réparer votre appareil dès aujourd\'hui.',
+      cta: 'Lancer l\'assistant iFixit',
+      url: 'https://www.ifixit.com/Chatbot',
+    },
     selfRepair: {
       title: 'Ressources pour réparer soi-même',
       ifixit: 'iFixit — Guides de réparation gratuits',

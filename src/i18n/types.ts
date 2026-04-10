@@ -51,6 +51,13 @@ export interface Translations {
     intro: string;
     howItWorks: { title: string; steps: string[] };
     whatWeRepair: { title: string; items: string[] };
+    ifixitBot: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      cta: string;
+      url: string;
+    };
     selfRepair: {
       title: string;
       ifixit: string;
