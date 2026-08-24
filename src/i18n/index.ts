@@ -12,12 +12,20 @@ export function getLangFromUrl(url: URL): Lang {
   return 'fr';
 }
 
+// Pages whose URL slug differs between locales: [fr path, en path]
+const localizedSlugPairs: [string, string][] = [
+  ['/jardin-partage', '/shared-garden'],
+  ['/don', '/donate'],
+];
+
 export function useTranslations(lang: Lang): Translations {
   return languages[lang] ?? fr;
 }
 
 export function getLocalePath(lang: Lang, path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  if (lang === 'fr') return `${base}${path}`;
-  return `${base}/en${path}`;
+  const pair = localizedSlugPairs.find(([frPath, enPath]) => path === frPath || path === enPath);
+  const localized = pair ? (lang === 'fr' ? pair[0] : pair[1]) : path;
+  if (lang === 'fr') return `${base}${localized}`;
+  return `${base}/en${localized}`;
 }

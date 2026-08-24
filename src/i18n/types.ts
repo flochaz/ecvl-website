@@ -32,7 +32,6 @@ export interface Translations {
     title: string;
     repairCafe: { title: string; short: string; cta: string };
     garden: { title: string; short: string; cta: string };
-    fruitPicking: { title: string; short: string };
   };
   donate: {
     title: string;
@@ -82,9 +81,17 @@ export interface Translations {
     subtitle: string;
     intro: string;
     whatWeGrow: { title: string; items: string[] };
-    participate: { title: string; steps: string[] };
+    participate: {
+      title: string;
+      contact: string;
+      contactCta: string;
+      contactEmail: string;
+    };
     principles: { title: string; items: string[] };
-    fruitPicking: { title: string; description: string };
+    activities: { title: string; items: string[] };
+    dates: { title: string; subtitle: string };
+    membership: { title: string; description: string };
+    gallery: { title: string; prev: string; next: string };
     nextEvents: string;
   };
   participate: {

@@ -43,10 +43,6 @@ export const en: Translations = {
       short: 'A collaborative gardening space open to all residents.',
       cta: 'Learn more',
     },
-    fruitPicking: {
-      title: 'Fruit Gleaning',
-      short: 'Collective fruit picking to fight food waste.',
-    },
   },
   donate: {
     title: 'Support the association',
@@ -128,34 +124,47 @@ export const en: Translations = {
         'Aromatic & medicinal plants',
         'Bee-friendly flowers for pollinators',
         'Fruit trees',
+        'Good times together',
       ],
     },
     participate: {
-      title: 'How to participate?',
-      steps: [
-        'Become a member of the association.',
-        'Attend the gardening meetings.',
-        'Commit to a plot or collective support.',
-      ],
+      title: 'How to participate',
+      contact: 'Contact us to arrange a visit to the garden.',
+      contactCta: 'Send us an email',
+      contactEmail: 'ecvl.contact@gmail.com',
     },
     principles: {
       title: 'Our principles',
       items: [
-        '100% organic gardening',
-        'Shared harvests',
+        'Gardening using natural methods, on living soil, at the rhythm of the seasons',
+        'A collective garden on a single plot, cultivated together',
+        'Sharing the harvests',
         'All skill levels welcome',
         'Respect for biodiversity',
       ],
     },
-    fruitPicking: {
-      title: 'Fruit Gleaning',
-      description:
-        'Every summer, we organise gleaning outings to pick fruit from untended trees. Nothing goes to waste!',
+    activities: {
+      title: 'Our activities',
+      items: [
+        'Collective sessions all year round for garden members',
+        '"Open garden" sessions welcoming the public to talk and garden together (autumn and spring)',
+        'School visits: planting, harvesting and seasonal tastings',
+        'Welcoming social and civic associations',
+      ],
+    },
+    dates: {
+      title: 'Dates',
+      subtitle: 'Find the garden\'s upcoming dates on our Facebook page.',
     },
     membership: {
       title: 'Become a volunteer',
       description:
         'Join the shared garden volunteer team! Sign up via HelloAsso to take part in workshops and help tend the garden together.',
+    },
+    gallery: {
+      title: 'Photo gallery',
+      prev: 'Previous photo',
+      next: 'Next photo',
     },
     nextEvents: 'Next gardening workshops',
   },

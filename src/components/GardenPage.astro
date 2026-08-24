@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventCard from '../components/EventCard.astro';
+import PhotoCarousel from '../components/PhotoCarousel.astro';
+import FacebookFeed from '../components/FacebookFeed.astro';
+import { useTranslations, getLocalePath } from '../i18n';
+import type { Lang } from '../i18n';
+import type { HAEvent } from '../types/events';
+import eventsData from '../data/events.json';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const tg = t.garden;
+// FR page lives at /jardin-partage, EN page at /en/shared-garden
+const currentPath = lang === 'fr' ? '/jardin-partage' : '/en/shared-garden';
+
+const allEvents = eventsData as HAEvent[];
+const gardenEvents = allEvents.filter((e) =>
+  e.formType !== 'Membership' &&
+  (e.title.toLowerCase().includes('jardin') ||
+  e.title.toLowerCase().includes('garden')),
+);
+
+const gardenPhotos =
+  lang === 'fr'
+    ? [
+        { src: '/images/jardin-1.jpg', alt: 'Légumes frais du jardin partagé' },
+        { src: '/images/jardin-2.jpg', alt: 'Récolte de patates douces au jardin' },
+        { src: '/images/jardin-3.jpg', alt: 'Vue du jardin de l’Abreuvoir' },
+        { src: '/images/jardin-4.jpeg', alt: 'Atelier au jardin partagé' },
+        { src: '/images/jardin-5.jpeg', alt: 'Plates-bandes cultivées du jardin' },
+        { src: '/images/jardin-6.jpeg', alt: 'Plantations au jardin partagé' },
+        { src: '/images/jardin-7.jpeg', alt: 'Travail collectif au jardin' },
+        { src: '/images/jardin-8.jpeg', alt: 'Récolte de légumes au jardin' },
+        { src: '/images/jardin-9.jpeg', alt: 'Le potager de l’Abreuvoir' },
+        { src: '/images/jardin-10.jpeg', alt: 'Moment convivial au jardin' },
+        { src: '/images/jardin-11.jpeg', alt: 'Le jardin de l’Abreuvoir en été' },
+      ]
+    : [
+        { src: '/images/jardin-1.jpg', alt: 'Fresh vegetables from the shared garden' },
+        { src: '/images/jardin-2.jpg', alt: 'Harvesting sweet potatoes in the garden' },
+        { src: '/images/jardin-3.jpg', alt: 'View of the Abreuvoir shared garden' },
+        { src: '/images/jardin-4.jpeg', alt: 'Workshop at the shared garden' },
+        { src: '/images/jardin-5.jpeg', alt: 'Cultivated beds in the garden' },
+        { src: '/images/jardin-6.jpeg', alt: 'Planting in the shared garden' },
+        { src: '/images/jardin-7.jpeg', alt: 'Collective work in the garden' },
+        { src: '/images/jardin-8.jpeg', alt: 'Harvesting vegetables in the garden' },
+        { src: '/images/jardin-9.jpeg', alt: 'The Abreuvoir vegetable patch' },
+        { src: '/images/jardin-10.jpeg', alt: 'A friendly moment in the garden' },
+        { src: '/images/jardin-11.jpeg', alt: 'The Abreuvoir garden in summer' },
+      ];
+
+const heroAlt =
+  lang === 'fr'
+    ? "Le Jardin de l'Abreuvoir à Villeneuve-Loubet"
+    : 'The shared garden at Villeneuve-Loubet';
+
+const activitiesIcons = ['🌱', '🌻', '🧑‍🌾', '🤝'];
+---
+
+<Layout lang={lang} currentPath={currentPath} title={tg.title}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-ecvl-green-900 min-h-[420px] md:min-h-[500px] flex items-center">
+    <img
+      src={`${import.meta.env.BASE_URL}/images/jardin-banner.png`}
+      alt={heroAlt}
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-50"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-ecvl-green-900/90 via-ecvl-green-900/55 to-transparent"></div>
+    <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="max-w-2xl">
+        <a href={getLocalePath(lang, '/')} class="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm mb-6 transition-colors">
+          ← {t.nav.home}
+        </a>
+        <div class="text-5xl mb-4">🌱</div>
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">{tg.title}</h1>
+        <p class="text-xl text-ecvl-green-100 italic mb-6">{tg.subtitle}</p>
+        <p class="text-ecvl-green-100 leading-relaxed">{tg.intro}</p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-12">
+        <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="#fef9f0" />
+      </svg>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+
+    <!-- Photo gallery -->
+    <PhotoCarousel
+      images={gardenPhotos}
+      prevLabel={tg.gallery.prev}
+      nextLabel={tg.gallery.next}
+    />
+
+    <!-- What we grow + principles -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="bg-ecvl-green-50 rounded-2xl p-7">
+        <h2 class="text-xl font-bold text-gray-900 mb-5">{tg.whatWeGrow.title}</h2>
+        <ul class="space-y-3">
+          {tg.whatWeGrow.items.map((item) => (
+            <li class="flex items-center gap-3 text-gray-700">
+              <span class="text-lg">🌿</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-7">
+        <h2 class="text-xl font-bold text-gray-900 mb-5">{tg.principles.title}</h2>
+        <ul class="space-y-3">
+          {tg.principles.items.map((item) => (
+            <li class="flex items-center gap-3 text-gray-700">
+              <span class="w-2 h-2 rounded-full bg-ecvl-green-500 shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Our activities -->
+    <section class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-6">{tg.activities.title}</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {tg.activities.items.map((item, i) => (
+          <li class="flex items-start gap-3 bg-ecvl-green-50 rounded-xl p-4 text-gray-700">
+            <span class="text-xl shrink-0" aria-hidden="true">{activitiesIcons[i] ?? '🌿'}</span>
+            <span class="text-sm leading-relaxed">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- How to participate -->
+    <section class="bg-ecvl-earth-50 border border-ecvl-earth-200 rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
+      <div class="text-5xl shrink-0" aria-hidden="true">✉️</div>
+      <div class="flex-1">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">{tg.participate.title}</h2>
+        <p class="text-gray-700 leading-relaxed">{tg.participate.contact}</p>
+      </div>
+      <a
+        href={`mailto:${tg.participate.contactEmail}`}
+        class="inline-flex items-center gap-2 bg-ecvl-green-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors shrink-0"
+      >
+        ✉️ {tg.participate.contactCta}
+      </a>
+    </section>
+
+    <!-- Dates -->
+    <section>
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">{tg.dates.title}</h2>
+        <p class="text-gray-500">{tg.dates.subtitle}</p>
+      </div>
+      <FacebookFeed lang={lang} />
+    </section>
+
+    <!-- Membership CTA -->
+    <section class="bg-ecvl-green-50 border border-ecvl-green-200 rounded-2xl p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-6">
+        <div class="text-5xl shrink-0">🤝</div>
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{tg.membership.title}</h2>
+          <p class="text-gray-600 leading-relaxed">{tg.membership.description}</p>
+        </div>
+      </div>
+      <iframe
+        id="haWidgetButton"
+        allowtransparency="true"
+        src="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/adhesions/benevole/widget-bouton"
+        style="width: 100%; height: 70px; border: none;"
+        title="Devenir bénévole via HelloAsso"
+      ></iframe>
+    </section>
+
+    <!-- Upcoming garden events -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{tg.nextEvents}</h2>
+      {gardenEvents.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {gardenEvents.map((event) => (
+            <EventCard event={event} lang={lang} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
+          <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
+          <a
+            href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/adhesions/benevole"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-ecvl-green-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors"
+          >
+            {t.events.viewAll}
+          </a>
+        </div>
+      )}
+    </section>
+
+  </div>
+</Layout>

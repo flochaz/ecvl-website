@@ -44,10 +44,6 @@ export const fr: Translations = {
       short: 'Un espace de jardinage collaboratif ouvert à tous les habitants.',
       cta: 'En savoir plus',
     },
-    fruitPicking: {
-      title: 'Glanage de fruits',
-      short: 'Cueillette collective de fruits pour lutter contre le gaspillage alimentaire.',
-    },
   },
   donate: {
     title: 'Soutenir l\'association',
@@ -128,34 +124,47 @@ export const fr: Translations = {
         'Plantes aromatiques & médicinales',
         'Fleurs mellifères pour les pollinisateurs',
         'Arbres fruitiers',
+        'Convivialité',
       ],
     },
     participate: {
-      title: 'Comment participer ?',
-      steps: [
-        'Devenir membre de l\'association.',
-        'Participer aux réunions de jardinage.',
-        "S'engager sur une parcelle ou en soutien collectif.",
-      ],
+      title: 'Comment participer',
+      contact: 'Contactez-nous pour organiser une rencontre au jardin.',
+      contactCta: 'Envoyez-nous un email',
+      contactEmail: 'ecvl.contact@gmail.com',
     },
     principles: {
       title: 'Nos principes',
       items: [
-        'Jardinage 100 % bio',
+        'Jardinage selon des principes naturels, sur sol vivant, au rythme des saisons',
+        'Jardin collectif, sur une parcelle unique cultivée tous ensemble',
         'Partage des récoltes',
         'Accueil de tous les niveaux',
         'Respect de la biodiversité',
       ],
     },
-    fruitPicking: {
-      title: 'Glanage de fruits',
-      description:
-        'Chaque été, nous organisons des sorties de glanage pour cueillir les fruits des arbres non exploités. Rien ne se perd !',
+    activities: {
+      title: 'Nos activités',
+      items: [
+        'Séances collectives toute l\'année pour les adhérents au jardin',
+        'Sessions de « jardin ouvert » avec accueil du public pour échanger et jardiner ensemble (automne et printemps)',
+        'Accueil scolaire : plantation, récolte et dégustation de saison',
+        'Accueil d\'associations sociale et citoyenne',
+      ],
+    },
+    dates: {
+      title: 'Dates',
+      subtitle: 'Retrouvez les prochaines dates du jardin sur notre page Facebook.',
     },
     membership: {
       title: 'Devenir bénévole',
       description:
         'Rejoignez l’équipe de bénévoles du jardin partagé ! Inscrivez-vous via HelloAsso pour participer aux ateliers et prendre soin du jardin ensemble.',
+    },
+    gallery: {
+      title: 'Galerie photos',
+      prev: 'Photo précédente',
+      next: 'Photo suivante',
     },
     nextEvents: 'Prochains ateliers jardinage',
   },

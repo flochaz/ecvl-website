@@ -1,0 +1,63 @@
+---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: 'fr' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col lg:flex-row items-start gap-10 justify-center" data-fb-root>
+  <!-- Consent gate (shown by default) -->
+  <div class="fb-gate w-full max-w-[500px] mx-auto lg:mx-0 bg-blue-50 border border-blue-200 rounded-2xl p-8 text-center">
+    <div class="w-14 h-14 bg-[#1877f2] rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </div>
+    <h3 class="font-bold text-gray-900 mb-2">Facebook — ECVL</h3>
+    <p class="text-sm text-gray-600 mb-5 leading-relaxed">{t.facebook.consentText}</p>
+    <button
+      type="button"
+      class="fb-load-btn bg-[#1877f2] text-white px-7 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+    >
+      {t.facebook.loadButton}
+    </button>
+    <a
+      href="https://www.facebook.com/ecvl06/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block mt-4 text-sm text-blue-600 hover:underline"
+    >
+      {t.facebook.viewPage}
+    </a>
+  </div>
+  <!-- Feed (hidden until consent) -->
+  <div class="fb-feed hidden w-full max-w-[500px] mx-auto lg:mx-0">
+    <iframe
+      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fecvl06%2F&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+      width="500"
+      height="600"
+      style="border:none;overflow:hidden;border-radius:16px;width:100%;"
+      scrolling="no"
+      frameborder="0"
+      allowfullscreen
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      title={lang === 'fr' ? 'Fil Facebook ECVL' : 'ECVL Facebook feed'}
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-fb-root]').forEach((root) => {
+    const gate = root.querySelector('.fb-gate');
+    const feed = root.querySelector('.fb-feed');
+    const btn = root.querySelector('.fb-load-btn');
+    btn?.addEventListener('click', () => {
+      gate?.classList.add('hidden');
+      feed?.classList.remove('hidden');
+    });
+  });
+</script>
