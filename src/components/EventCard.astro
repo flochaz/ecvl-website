@@ -27,6 +27,8 @@ const timeLabel = event.startsAt
       minute: '2-digit',
     })
   : null;
+// Yapla scraper uses noon (12:00) as a timezone-safe placeholder for date-only events — hide it.
+const hideTime = timeLabel === '12:00';
 ---
 
 <article class="bg-white rounded-2xl border border-ecvl-green-100/60 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all overflow-hidden flex flex-col">
@@ -58,8 +60,12 @@ const timeLabel = event.startsAt
               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <span class="capitalize">{dateLabel}</span>
-          <span class="text-gray-300">·</span>
-          <span class="text-gray-500 font-normal">{timeLabel}</span>
+          {!hideTime && (
+            <>
+              <span class="text-gray-300">·</span>
+              <span class="text-gray-500 font-normal">{timeLabel}</span>
+            </>
+          )}
         </>
       ) : (
         <>

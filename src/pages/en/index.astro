@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import EventCard from '../../components/EventCard.astro';
 import FacebookFeed from '../../components/FacebookFeed.astro';
+import DonateWidget from '../../components/DonateWidget.astro';
 import { useTranslations, getLocalePath } from '../../i18n';
 import type { HAEvent } from '../../types/events';
 import eventsData from '../../data/events.json';
@@ -134,7 +135,7 @@ const events = (eventsData as HAEvent[]).filter((e) => e.formType !== 'Membershi
           <div class="text-5xl mb-4">📅</div>
           <p class="text-ecvl-green-200">{t.events.noEvents}</p>
           <a
-            href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet#event"
+            href="https://ecologie-citoyenne-pour-villeneuve-loubet-1.s2.yapla.com/fr/evenements"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-6 inline-block text-sm font-semibold text-ecvl-earth-300 hover:text-ecvl-earth-200 transition-colors"
@@ -165,14 +166,7 @@ const events = (eventsData as HAEvent[]).filter((e) => e.formType !== 'Membershi
         <h2 class="font-display text-2xl md:text-3xl font-bold mb-4">{t.donate.title}</h2>
         <p class="text-ecvl-green-100 text-lg mb-2 max-w-xl mx-auto">{t.donate.subtitle}</p>
         <p class="text-ecvl-green-300 text-sm mb-10">{t.donate.taxInfo}</p>
-        <a
-          href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-ecvl-earth-400 hover:bg-ecvl-earth-300 text-white font-bold px-9 py-4 rounded-full transition-colors shadow-xl shadow-black/20 text-base"
-        >
-          ❤️ {t.donate.cta}
-        </a>
+        <DonateWidget lang={lang} />
       </div>
     </div>
   </section>

@@ -28,8 +28,6 @@ export const en: Translations = {
     noEvents: 'No upcoming events at the moment. Check back soon!',
     register: 'Register',
     viewAll: 'View all events',
-    on: 'On',
-    at: 'at',
   },
   activities: {
     title: 'Our activities',
@@ -48,7 +46,7 @@ export const en: Translations = {
     title: 'Support the association',
     subtitle:
       'Every donation helps us carry out our projects for a greener Villeneuve-Loubet.',
-    cta: 'Donate on HelloAsso',
+    cta: 'Donate',
     taxInfo: 'Donations are 66% tax-deductible in France.',
   },
   facebook: {
@@ -110,7 +108,7 @@ export const en: Translations = {
       fakeDataNote: 'Preview of what RepairMonitor integration will look like — real data will appear here once connected.',
     },
     nextSessions: 'Next sessions',
-    register: 'Register on HelloAsso',
+    register: 'Register',
   },
   garden: {
     title: 'Shared Garden',
@@ -159,7 +157,7 @@ export const en: Translations = {
     membership: {
       title: 'Become a volunteer',
       description:
-        'Join the shared garden volunteer team! Sign up via HelloAsso to take part in workshops and help tend the garden together.',
+        'Join the shared garden volunteer team! Sign up via Yapla to take part in workshops and help tend the garden together.',
     },
     gallery: {
       title: 'Photo gallery',

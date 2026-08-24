@@ -137,20 +137,6 @@ const activitiesIcons = ['🌱', '🌻', '🧑‍🌾', '🤝'];
       </ul>
     </section>
 
-    <!-- How to participate -->
-    <section class="bg-ecvl-earth-50 border border-ecvl-earth-200 rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center gap-6">
-      <div class="text-5xl shrink-0" aria-hidden="true">✉️</div>
-      <div class="flex-1">
-        <h2 class="text-xl font-bold text-gray-900 mb-2">{tg.participate.title}</h2>
-        <p class="text-gray-700 leading-relaxed">{tg.participate.contact}</p>
-      </div>
-      <a
-        href={`mailto:${tg.participate.contactEmail}`}
-        class="inline-flex items-center gap-2 bg-ecvl-green-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors shrink-0"
-      >
-        ✉️ {tg.participate.contactCta}
-      </a>
-    </section>
 
     <!-- Dates -->
     <section>
@@ -170,37 +156,19 @@ const activitiesIcons = ['🌱', '🌻', '🧑‍🌾', '🤝'];
           <p class="text-gray-600 leading-relaxed">{tg.membership.description}</p>
         </div>
       </div>
-      <iframe
-        id="haWidgetButton"
-        allowtransparency="true"
-        src="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/adhesions/benevole/widget-bouton"
-        style="width: 100%; height: 70px; border: none;"
-        title="Devenir bénévole via HelloAsso"
-      ></iframe>
-    </section>
-
-    <!-- Upcoming garden events -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">{tg.nextEvents}</h2>
-      {gardenEvents.length > 0 ? (
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {gardenEvents.map((event) => (
-            <EventCard event={event} lang={lang} />
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
-          <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
-          <a
-            href="https://www.helloasso.com/associations/ecologie-citoyenne-pour-villeneuve-loubet/adhesions/benevole"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-ecvl-green-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors"
-          >
-            {t.events.viewAll}
-          </a>
-        </div>
-      )}
+      <a
+        href="https://ecologie-citoyenne-pour-villeneuve-loubet.s2.yapla.com/fr/espace-membres"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-ecvl-green-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors w-full sm:w-auto"
+      >
+        ✍️ {tg.membership.title}
+      </a> ou <a
+        href={`mailto:${tg.participate.contactEmail}`}
+        class="inline-flex items-center gap-2 bg-ecvl-green-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors shrink-0"
+      >
+        ✉️ {tg.participate.contactCta}
+      </a>
     </section>
 
   </div>

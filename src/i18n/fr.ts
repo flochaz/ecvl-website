@@ -29,8 +29,6 @@ export const fr: Translations = {
     noEvents: 'Aucun événement à venir pour le moment. Revenez bientôt !',
     register: "S'inscrire",
     viewAll: 'Voir tous les événements',
-    on: 'Le',
-    at: 'à',
   },
   activities: {
     title: 'Nos activités',
@@ -48,7 +46,7 @@ export const fr: Translations = {
   donate: {
     title: 'Soutenir l\'association',
     subtitle: 'Chaque don nous aide à mener nos projets pour un Villeneuve-Loubet plus écologique.',
-    cta: 'Faire un don sur HelloAsso',
+    cta: 'Faire un don',
     taxInfo: 'Les dons sont déductibles à 66 % de vos impôts.',
   },
   facebook: {
@@ -110,7 +108,7 @@ export const fr: Translations = {
       fakeDataNote: 'Aperçu de ce que permettra l\'intégration RepairMonitor — les vraies données apparaîtront ici une fois connectées.',
     },
     nextSessions: 'Prochaines sessions',
-    register: 'S\'inscrire sur HelloAsso',
+    register: "S'inscrire",
   },
   garden: {
     title: 'Jardin Partagé',
@@ -159,7 +157,7 @@ export const fr: Translations = {
     membership: {
       title: 'Devenir bénévole',
       description:
-        'Rejoignez l’équipe de bénévoles du jardin partagé ! Inscrivez-vous via HelloAsso pour participer aux ateliers et prendre soin du jardin ensemble.',
+        'Rejoignez l’équipe de bénévoles du jardin partagé ! Inscrivez-vous via Yapla pour participer aux ateliers et prendre soin du jardin ensemble.',
     },
     gallery: {
       title: 'Galerie photos',
@@ -174,7 +172,7 @@ export const fr: Translations = {
     intro: 'Devenir bénévole ECVL, c\'est rejoindre une équipe engagée et conviviale pour agir concrètement pour l\'environnement et le lien social à Villeneuve-Loubet. Pas besoin d\'expertise : votre bonne volonté et votre curiosité suffisent !',
     repairCafe: {
       title: 'Bénévole Repair Café',
-      schedule: '1er samedi du mois — après-midi de 4h',
+      schedule: '1er samedi du mois — 14h-17h',
       description: 'Chaque premier samedi du mois, nous ouvrons les portes du Repair Café pour aider les habitants à faire réparer leurs objets. En tant que bénévole, vous accueillez les visiteurs et prêtez main-forte aux réparateurs selon vos compétences. La session dure environ 4 heures l\'après-midi. Venez quand vous pouvez, chaque présence compte !',
       tasks: [
         'Accueil des visiteurs et gestion de la file',

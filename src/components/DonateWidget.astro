@@ -1,0 +1,51 @@
+---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: 'fr' | 'en';
+  /** Tailwind classes for the CTA button (context-specific styling) */
+  buttonClass?: string;
+}
+
+const { lang, buttonClass } = Astro.props;
+const t = useTranslations(lang);
+const donateUrl = 'https://ecologie-citoyenne-pour-villeneuve-loubet.s2.yapla.com/fr/campaign-16606';
+const iframeTitle = lang === 'fr' ? 'Faire un don via Yapla' : 'Donate via Yapla';
+---
+
+<div data-donate-widget class="flex flex-col items-center">
+  <!-- CTA button — replaced by the iframe when clicked -->
+  <button
+    type="button"
+    data-donate-trigger
+    class="inline-flex items-center gap-2 bg-ecvl-earth-400 hover:bg-ecvl-earth-300 text-white font-bold px-9 py-4 rounded-full transition-colors shadow-xl shadow-black/20 text-base cursor-pointer"
+  >
+    ❤️ {t.donate.cta}
+  </button>
+
+  <!-- Hidden until click -->
+  <div data-donate-panel class="hidden w-full">
+    <iframe
+      src={donateUrl}
+      width="950"
+      height="750"
+      style="width:100%;height:750px;border:none;border-radius:16px;display:block;"
+      title={iframeTitle}
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-donate-widget]').forEach((root) => {
+    const trigger = root.querySelector('[data-donate-trigger]');
+    const panel = root.querySelector('[data-donate-panel]');
+    trigger?.addEventListener('click', () => {
+      trigger.classList.add('hidden');
+      panel.classList.remove('hidden');
+      // Scroll the iframe into view so the form is immediately visible
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>

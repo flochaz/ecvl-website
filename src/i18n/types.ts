@@ -25,8 +25,6 @@ export interface Translations {
     noEvents: string;
     register: string;
     viewAll: string;
-    on: string;
-    at: string;
   };
   activities: {
     title: string;
