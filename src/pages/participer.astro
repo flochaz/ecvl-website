@@ -12,7 +12,7 @@ const tp = t.participate;
   <!-- Hero -->
   <section class="relative overflow-hidden bg-ecvl-green-900 min-h-[360px] md:min-h-[420px] flex items-center">
     <img
-      src={`${import.meta.env.BASE_URL}/images/ecvl-hero.jpeg`}
+      src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/ecvl-hero.jpeg`}
       alt="Bénévoles ECVL"
       class="absolute inset-0 w-full h-full object-cover object-center opacity-30"
     />
@@ -51,7 +51,7 @@ const tp = t.participate;
       <div class="bg-white rounded-2xl border border-ecvl-earth-100 shadow-sm overflow-hidden flex flex-col">
         <div class="h-44 overflow-hidden">
           <img
-            src={`${import.meta.env.BASE_URL}/images/repair-1.jpg`}
+            src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/repair-1.jpg`}
             alt="Bénévoles au Repair Café"
             class="w-full h-full object-cover"
             loading="lazy"
@@ -87,7 +87,7 @@ const tp = t.participate;
       <div class="bg-white rounded-2xl border border-ecvl-green-100 shadow-sm overflow-hidden flex flex-col">
         <div class="h-44 overflow-hidden">
           <img
-            src={`${import.meta.env.BASE_URL}/images/jardin-1.jpg`}
+            src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/jardin-1.jpg`}
             alt="Le jardin partagé de l'Abreuvoir"
             class="w-full h-full object-cover"
             loading="lazy"
