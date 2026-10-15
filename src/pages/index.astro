@@ -4,6 +4,7 @@ import EventCard from '../components/EventCard.astro';
 import FacebookFeed from '../components/FacebookFeed.astro';
 import DonateWidget from '../components/DonateWidget.astro';
 import { useTranslations, getLocalePath } from '../i18n';
+import { HUB_EVENTS_URL } from '../lib/hub';
 import type { HAEvent } from '../types/events';
 import eventsData from '../data/events.json';
 
@@ -150,7 +151,7 @@ const events = (eventsData as HAEvent[]).filter((e) => e.formType !== 'Membershi
           <div class="text-5xl mb-4">📅</div>
           <p class="text-ecvl-green-200">{t.events.noEvents}</p>
           <a
-            href="https://ecologie-citoyenne-pour-villeneuve-loubet-1.s2.yapla.com/fr/evenements"
+            href={HUB_EVENTS_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="mt-6 inline-block text-sm font-semibold text-ecvl-earth-300 hover:text-ecvl-earth-200 transition-colors"

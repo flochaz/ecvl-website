@@ -27,7 +27,6 @@ export const fr: Translations = {
     title: 'Prochains événements',
     subtitle: 'Rejoignez-nous lors de nos prochaines activités',
     noEvents: 'Aucun événement à venir pour le moment. Revenez bientôt !',
-    register: "S'inscrire",
     viewAll: 'Voir tous les événements',
   },
   activities: {
@@ -108,7 +107,11 @@ export const fr: Translations = {
       fakeDataNote: 'Aperçu de ce que permettra l\'intégration RepairMonitor — les vraies données apparaîtront ici une fois connectées.',
     },
     nextSessions: 'Prochaines sessions',
-    register: "S'inscrire",
+    whenWhere: {
+      title: 'Quand et où ?',
+      when: 'Généralement le premier samedi du mois, de 14h à 17h.',
+      where: 'Salle Joseph Donon, 87-27 Allée des Bugadières, 06270 Villeneuve-Loubet.',
+    },
   },
   garden: {
     title: 'Jardin Partagé',

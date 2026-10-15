@@ -1,7 +1,6 @@
 ---
 import type { HAEvent } from '../types/events';
 import type { Lang } from '../i18n';
-import { useTranslations } from '../i18n';
 
 interface Props {
   event: HAEvent;
@@ -9,7 +8,6 @@ interface Props {
 }
 
 const { event, lang } = Astro.props;
-const t = useTranslations(lang);
 
 const isMembership = event.formType === 'Membership';
 
@@ -95,17 +93,5 @@ const hideTime = timeLabel === '12:00';
     {event.description && (
       <p class="text-sm text-gray-500 leading-relaxed flex-1 line-clamp-3">{event.description}</p>
     )}
-
-    <a
-      href={event.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-5 inline-flex items-center justify-center gap-2 bg-ecvl-green-600 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-green-700 transition-colors"
-    >
-      {t.events.register}
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-      </svg>
-    </a>
   </div>
 </article>

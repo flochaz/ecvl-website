@@ -1,14 +1,13 @@
 [
   {
-    "title": "Repair café - Septembre",
-    "description": "Le Repair Café est là pour vous aider à réparer vos objets cassés.",
-    "startsAt": "2026-09-05T10:00:00.000Z",
-    "endsAt": null,
-    "url": "https://ecologie-citoyenne-pour-villeneuve-loubet-1.s2.yapla.com/fr/evenements/register/repair-cafe-septembre/124058",
-    "imageUrl": "https://cdn.eu.yapla.com/company/CPYdIhFHeW4ErQM2Vi5xKTwRq/event/repair-cafe-1787564152.png",
-    "place": null,
-    "city": null,
+    "title": "Repair Café - 7 Novembre 2026",
+    "description": "",
+    "startsAt": "2026-11-07T14:00:00",
+    "endsAt": "2026-11-07T17:00:00",
+    "url": "https://repair-cafe-hub.florianchazal-79f.workers.dev/events",
+    "place": "Salle Joseph Donon",
+    "city": "06270",
     "formType": "Event",
-    "id": 124058
+    "id": "7e7977f2-d360-400e-8ff9-fa60757d8817"
   }
 ]

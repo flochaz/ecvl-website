@@ -23,7 +23,6 @@ export interface Translations {
     title: string;
     subtitle: string;
     noEvents: string;
-    register: string;
     viewAll: string;
   };
   activities: {
@@ -72,7 +71,7 @@ export interface Translations {
     };
     repairMonitor: { title: string; subtitle: string; noData: string; fakeDataBadge: string; fakeDataNote: string };
     nextSessions: string;
-    register: string;
+    whenWhere: { title: string; when: string; where: string };
   };
   garden: {
     title: string;

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import EventCard from '../../components/EventCard.astro';
 import { useTranslations, getLocalePath } from '../../i18n';
+import { HUB_EVENTS_URL } from '../../lib/hub';
 import type { HAEvent } from '../../types/events';
 import eventsData from '../../data/events.json';
 
@@ -56,14 +57,31 @@ const repairEvents = allEvents.filter((e) =>
       </div>
       <div class="space-y-4">
         <p class="text-gray-700 leading-relaxed">{tr.intro}</p>
-        <a
-          href="https://ecologie-citoyenne-pour-villeneuve-loubet-1.s2.yapla.com/fr/evenements"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-ecvl-earth-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-ecvl-earth-700 transition-colors"
-        >
-          {tr.register} →
-        </a>
+      </div>
+    </section>
+
+    <!-- When & where -->
+    <section>
+      <div class="rounded-2xl border border-ecvl-earth-100 bg-white p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">{tr.whenWhere.title}</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex gap-3">
+            <span class="shrink-0" aria-hidden="true">🗓️</span>
+            <span>{tr.whenWhere.when}</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0" aria-hidden="true">📍</span>
+            <span>
+              {tr.whenWhere.where}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Salle%20Joseph%20Donon%2C%2087-27%20All%C3%A9e%20des%20Bugadi%C3%A8res%2C%2006270%20Villeneuve-Loubet"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ml-1 underline hover:text-gray-900"
+              >Google Maps</a>
+            </span>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -176,12 +194,12 @@ const repairEvents = allEvents.filter((e) =>
         <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
           <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
           <a
-            href="https://ecologie-citoyenne-pour-villeneuve-loubet-1.s2.yapla.com/fr/evenements"
+            href={HUB_EVENTS_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 bg-ecvl-earth-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-earth-700 transition-colors"
           >
-            {tr.register}
+            {t.events.viewAll}
           </a>
         </div>
       )}

@@ -26,7 +26,6 @@ export const en: Translations = {
     title: 'Upcoming events',
     subtitle: 'Join us at our next activities',
     noEvents: 'No upcoming events at the moment. Check back soon!',
-    register: 'Register',
     viewAll: 'View all events',
   },
   activities: {
@@ -108,7 +107,11 @@ export const en: Translations = {
       fakeDataNote: 'Preview of what RepairMonitor integration will look like — real data will appear here once connected.',
     },
     nextSessions: 'Next sessions',
-    register: 'Register',
+    whenWhere: {
+      title: 'When and where?',
+      when: 'Usually the first Saturday of the month, 2–5 pm.',
+      where: 'Salle Joseph Donon, 87-27 Allée des Bugadières, 06270 Villeneuve-Loubet.',
+    },
   },
   garden: {
     title: 'Shared Garden',
