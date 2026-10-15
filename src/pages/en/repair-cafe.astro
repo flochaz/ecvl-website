@@ -5,10 +5,23 @@ import { useTranslations, getLocalePath } from '../../i18n';
 import { HUB_EVENTS_URL } from '../../lib/hub';
 import type { HAEvent } from '../../types/events';
 import eventsData from '../../data/events.json';
+import statsData from '../../data/stats.json';
 
 const lang = 'en';
 const t = useTranslations(lang);
 const tr = t.repairCafe;
+
+/** The hub's public figures, refreshed into src/data/stats.json at build time. */
+type ImpactStats = {
+  repairCount: number;
+  completedCount: number;
+  objectsSavedKg: number;
+  eventCount: number;
+  volunteerCount: number;
+  successRate: number;
+  updatedAt: string | null;
+};
+const stats = statsData as ImpactStats;
 
 const allEvents = eventsData as HAEvent[];
 const repairEvents = allEvents.filter((e) =>
@@ -155,31 +168,39 @@ const repairEvents = allEvents.filter((e) =>
     </section>
 
     <section class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">{tr.repairMonitor.title}</h2>
-      <p class="text-gray-500 text-sm mb-2">{tr.repairMonitor.subtitle}</p>
-      <!-- Preview with fake graphs -->
-      <div class="flex items-start gap-2 mb-6 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
-        <span class="text-amber-500 mt-0.5">⚠️</span>
-        <p class="text-amber-800 text-sm leading-relaxed">{tr.repairMonitor.fakeDataNote}</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {[1, 2, 3].map((n) => (
-          <div class="relative rounded-xl overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
-            <img
-              src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/repair-monitor-${n}.png`}
-              alt={`RepairMonitor – graph ${n}`}
-              class="w-full h-auto"
-              loading="lazy"
-            />
-            <div class="absolute top-2 right-2 bg-amber-400 text-amber-900 text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
-              {tr.repairMonitor.fakeDataBadge}
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">{tr.impact.title}</h2>
+      <p class="text-gray-500 text-sm mb-6">{tr.impact.subtitle}</p>
+      {stats.repairCount > 0 ? (
+        <>
+          <dl class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="rounded-xl bg-ecvl-green-50 border border-ecvl-green-100 p-5 text-center">
+              <dd class="text-3xl font-bold text-ecvl-green-800">
+                {stats.objectsSavedKg.toLocaleString('en-GB')}<span class="text-base font-medium text-gray-500"> kg</span>
+              </dd>
+              <dt class="mt-1 text-sm font-semibold text-gray-800">{tr.impact.objectsSaved}</dt>
+              <p class="mt-0.5 text-xs text-gray-500">{tr.impact.objectsHint}</p>
             </div>
-          </div>
-        ))}
-      </div>
-      <p class="text-xs text-gray-400 mt-4">
-        Data via <a href="https://repairmonitor.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600">RepairMonitor</a>
-      </p>
+            <div class="rounded-xl bg-ecvl-earth-50 border border-ecvl-earth-100 p-5 text-center">
+              <dd class="text-3xl font-bold text-ecvl-earth-800">{stats.repairCount}</dd>
+              <dt class="mt-1 text-sm font-semibold text-gray-800">{tr.impact.repairs}</dt>
+              <p class="mt-0.5 text-xs text-gray-500">{tr.impact.repairsHint}</p>
+            </div>
+            <div class="rounded-xl bg-ecvl-earth-50 border border-ecvl-earth-100 p-5 text-center">
+              <dd class="text-3xl font-bold text-ecvl-earth-800">{stats.eventCount}</dd>
+              <dt class="mt-1 text-sm font-semibold text-gray-800">{tr.impact.sessions}</dt>
+              <p class="mt-0.5 text-xs text-gray-500">{tr.impact.sessionsHint}</p>
+            </div>
+            <div class="rounded-xl bg-ecvl-earth-50 border border-ecvl-earth-100 p-5 text-center">
+              <dd class="text-3xl font-bold text-ecvl-earth-800">{stats.volunteerCount}</dd>
+              <dt class="mt-1 text-sm font-semibold text-gray-800">{tr.impact.volunteers}</dt>
+              <p class="mt-0.5 text-xs text-gray-500">{tr.impact.volunteersHint}</p>
+            </div>
+          </dl>
+          <p class="text-xs text-gray-400 mt-5">{tr.impact.footnote}</p>
+        </>
+      ) : (
+        <p class="text-gray-500">{tr.impact.fallback}</p>
+      )}
     </section>
 
     <section>

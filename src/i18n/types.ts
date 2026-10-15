@@ -69,7 +69,20 @@ export interface Translations {
       repairCafeIntl: string;
       repairCafeIntlUrl: string;
     };
-    repairMonitor: { title: string; subtitle: string; noData: string; fakeDataBadge: string; fakeDataNote: string };
+    impact: {
+      title: string;
+      subtitle: string;
+      objectsSaved: string;
+      objectsHint: string;
+      repairs: string;
+      repairsHint: string;
+      sessions: string;
+      sessionsHint: string;
+      volunteers: string;
+      volunteersHint: string;
+      fallback: string;
+      footnote: string;
+    };
     nextSessions: string;
     whenWhere: { title: string; when: string; where: string };
   };
