@@ -1,12 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import EventCard from '../components/EventCard.astro';
 import PhotoCarousel from '../components/PhotoCarousel.astro';
 import FacebookFeed from '../components/FacebookFeed.astro';
 import { useTranslations, getLocalePath } from '../i18n';
 import type { Lang } from '../i18n';
-import type { HAEvent } from '../types/events';
-import eventsData from '../data/events.json';
 
 interface Props {
   lang: Lang;
@@ -17,13 +14,6 @@ const t = useTranslations(lang);
 const tg = t.garden;
 // FR page lives at /jardin-partage, EN page at /en/shared-garden
 const currentPath = lang === 'fr' ? '/jardin-partage' : '/en/shared-garden';
-
-const allEvents = eventsData as HAEvent[];
-const gardenEvents = allEvents.filter((e) =>
-  e.formType !== 'Membership' &&
-  (e.title.toLowerCase().includes('jardin') ||
-  e.title.toLowerCase().includes('garden')),
-);
 
 const gardenPhotos =
   lang === 'fr'

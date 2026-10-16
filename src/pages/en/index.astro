@@ -1,17 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import EventCard from '../../components/EventCard.astro';
+import YaplaAgenda from '../../components/YaplaAgenda.astro';
 import FacebookFeed from '../../components/FacebookFeed.astro';
 import DonateWidget from '../../components/DonateWidget.astro';
 import { useTranslations, getLocalePath } from '../../i18n';
-import { HUB_EVENTS_URL } from '../../lib/hub';
-import type { HAEvent } from '../../types/events';
-import eventsData from '../../data/events.json';
 
 const lang = 'en';
 const t = useTranslations(lang);
 const currentPath = '/en/';
-const events = (eventsData as HAEvent[]).filter((e) => e.formType !== 'Membership');
 ---
 
 <Layout lang={lang} currentPath={currentPath} title={t.hero.title}>
@@ -125,26 +121,7 @@ const events = (eventsData as HAEvent[]).filter((e) => e.formType !== 'Membershi
         <p class="text-ecvl-green-300">{t.events.subtitle}</p>
         <div class="w-12 h-1 bg-ecvl-earth-400 rounded-full mx-auto mt-4"></div>
       </div>
-      {events.length > 0 ? (
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event) => (
-            <EventCard event={event} lang={lang} />
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-16 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
-          <div class="text-5xl mb-4">📅</div>
-          <p class="text-ecvl-green-200">{t.events.noEvents}</p>
-          <a
-            href={HUB_EVENTS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-6 inline-block text-sm font-semibold text-ecvl-earth-300 hover:text-ecvl-earth-200 transition-colors"
-          >
-            {t.events.viewAll} →
-          </a>
-        </div>
-      )}
+      <YaplaAgenda lang={lang} tone="dark" />
     </div>
   </section>
 

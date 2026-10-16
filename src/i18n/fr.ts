@@ -28,6 +28,7 @@ export const fr: Translations = {
     subtitle: 'Rejoignez-nous lors de nos prochaines activités',
     noEvents: 'Aucun événement à venir pour le moment. Revenez bientôt !',
     viewAll: 'Voir tous les événements',
+    liveNote: 'Agenda mis à jour en direct depuis Yapla.',
   },
   activities: {
     title: 'Nos activités',

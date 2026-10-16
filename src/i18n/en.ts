@@ -27,6 +27,7 @@ export const en: Translations = {
     subtitle: 'Join us at our next activities',
     noEvents: 'No upcoming events at the moment. Check back soon!',
     viewAll: 'View all events',
+    liveNote: 'Agenda updated live from Yapla.',
   },
   activities: {
     title: 'Our activities',

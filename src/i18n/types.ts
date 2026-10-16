@@ -24,6 +24,7 @@ export interface Translations {
     subtitle: string;
     noEvents: string;
     viewAll: string;
+    liveNote: string;
   };
   activities: {
     title: string;

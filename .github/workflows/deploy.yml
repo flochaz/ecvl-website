@@ -33,9 +33,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch events from Yapla
-        run: npm run fetch-events
-
       - name: Fetch impact stats from the hub
         run: npm run fetch-stats
 

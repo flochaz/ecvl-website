@@ -1,0 +1,46 @@
+---
+// A live window onto the organisation's Yapla agenda.
+//
+// The site is static and Yapla sends no CORS header, so the browser cannot read
+// the agenda itself — an iframe is how the current events show up without a
+// build step. See lib/yapla.ts for why framing is safe here.
+import { useTranslations } from '../i18n';
+import type { Lang } from '../i18n';
+import { YAPLA_AGENDA_URL } from '../lib/yapla';
+
+interface Props {
+  lang: Lang;
+  /** Height of the frame, in pixels. */
+  height?: number;
+  /** 'light' sits on a white page, 'dark' on the green home section. */
+  tone?: 'light' | 'dark';
+  /** Extra classes for the wrapper. */
+  class?: string;
+}
+
+const { lang, height = 820, tone = 'light', class: className = '' } = Astro.props;
+const t = useTranslations(lang);
+const frameTitle = lang === 'fr' ? 'Agenda des événements' : 'Events calendar';
+
+const wrapperClass =
+  tone === 'dark' ? 'border-white/10 bg-white' : 'border-gray-100 bg-white';
+const noteClass = tone === 'dark' ? 'text-ecvl-green-200' : 'text-gray-500';
+const linkClass =
+  tone === 'dark'
+    ? 'font-semibold text-ecvl-earth-300 underline hover:text-ecvl-earth-200'
+    : 'font-semibold text-ecvl-earth-700 underline hover:text-ecvl-earth-800';
+---
+
+<div class={`overflow-hidden rounded-2xl border shadow-sm ${wrapperClass} ${className}`}>
+  <iframe
+    src={YAPLA_AGENDA_URL}
+    title={frameTitle}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    style={`height: ${height}px`}
+    class="w-full border-0"></iframe>
+</div>
+<p class={`mt-3 text-center text-sm ${noteClass}`}>
+  {t.events.liveNote}
+  <a href={YAPLA_AGENDA_URL} target="_blank" rel="noopener noreferrer" class={linkClass}>{t.events.viewAll} →</a>
+</p>

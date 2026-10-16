@@ -1,10 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import EventCard from '../components/EventCard.astro';
+import YaplaAgenda from '../components/YaplaAgenda.astro';
 import { useTranslations, getLocalePath } from '../i18n';
-import { HUB_EVENTS_URL } from '../lib/hub';
-import type { HAEvent } from '../types/events';
-import eventsData from '../data/events.json';
 import statsData from '../data/stats.json';
 
 const lang = 'fr';
@@ -22,14 +19,6 @@ type ImpactStats = {
   updatedAt: string | null;
 };
 const stats = statsData as ImpactStats;
-
-// Filter repair café events (title contains "repair" or "café" case-insensitive)
-const allEvents = eventsData as HAEvent[];
-const repairEvents = allEvents.filter((e) =>
-  e.formType !== 'Membership' &&
-  (e.title.toLowerCase().includes('repair') ||
-  e.title.toLowerCase().includes('café')),
-);
 ---
 
 <Layout lang={lang} currentPath="/repair-cafe" title={tr.title}>
@@ -230,25 +219,7 @@ const repairEvents = allEvents.filter((e) =>
     <!-- Upcoming Repair Café sessions -->
     <section>
       <h2 class="text-2xl font-bold text-gray-900 mb-6">{tr.nextSessions}</h2>
-      {repairEvents.length > 0 ? (
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {repairEvents.map((event) => (
-            <EventCard event={event} lang={lang} />
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-12 bg-ecvl-green-50 rounded-2xl">
-          <p class="text-gray-500 mb-4">{t.events.noEvents}</p>
-          <a
-            href={HUB_EVENTS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-ecvl-earth-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-ecvl-earth-700 transition-colors"
-          >
-            {t.events.viewAll}
-          </a>
-        </div>
-      )}
+      <YaplaAgenda lang={lang} />
     </section>
 
   </div>

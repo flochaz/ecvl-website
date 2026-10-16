@@ -7,7 +7,6 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "fetch-events": "node scripts/fetch-events.mjs",
     "fetch-stats": "node scripts/fetch-stats.mjs"
   },
   "keywords": [],
