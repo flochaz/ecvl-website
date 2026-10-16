@@ -10,6 +10,11 @@ import { YAPLA_AGENDA_URL } from '../lib/yapla';
 
 interface Props {
   lang: Lang;
+  /**
+   * The Yapla agenda page to show. Defaults to the general agenda; a page whose
+   * Events Section is filtered to one category can be passed instead.
+   */
+  agendaUrl?: string;
   /** Height of the frame, in pixels. */
   height?: number;
   /** 'light' sits on a white page, 'dark' on the green home section. */
@@ -18,7 +23,7 @@ interface Props {
   class?: string;
 }
 
-const { lang, height = 820, tone = 'light', class: className = '' } = Astro.props;
+const { lang, agendaUrl = YAPLA_AGENDA_URL, height = 400, tone = 'light', class: className = '' } = Astro.props;
 const t = useTranslations(lang);
 const frameTitle = lang === 'fr' ? 'Agenda des événements' : 'Events calendar';
 
@@ -33,7 +38,7 @@ const linkClass =
 
 <div class={`overflow-hidden rounded-2xl border shadow-sm ${wrapperClass} ${className}`}>
   <iframe
-    src={YAPLA_AGENDA_URL}
+    src={agendaUrl}
     title={frameTitle}
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
@@ -42,5 +47,5 @@ const linkClass =
 </div>
 <p class={`mt-3 text-center text-sm ${noteClass}`}>
   {t.events.liveNote}
-  <a href={YAPLA_AGENDA_URL} target="_blank" rel="noopener noreferrer" class={linkClass}>{t.events.viewAll} →</a>
+  <a href={agendaUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>{t.events.viewAll} →</a>
 </p>
